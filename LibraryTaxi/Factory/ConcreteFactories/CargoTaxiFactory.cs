@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LibraryTaxi
+namespace LibraryTaxi.Factory.ConcreteFactories
 {
-    public class Class1
+    class CargoTaxiFactory
     {
     }
 }
