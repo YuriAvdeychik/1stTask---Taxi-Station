@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.27428.2043
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoTaxi", "DemoTaxi\DemoTaxi.csproj", "{FD2419DD-197B-47A4-9C79-A2CF40E1B025}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E60AECA5-1368-4926-AD9E-D07EDD8D3456} = {E60AECA5-1368-4926-AD9E-D07EDD8D3456}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryTaxi", "LibraryTaxi\LibraryTaxi.csproj", "{E60AECA5-1368-4926-AD9E-D07EDD8D3456}"
 EndProject

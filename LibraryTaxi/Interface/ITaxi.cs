@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace LibraryTaxi.Interface
 {
-    interface ITaxi
+    public interface ITaxi
     {
+        int Speed { get; }
+        int Price { get; }
+        int Cons { get; }
     }
 }

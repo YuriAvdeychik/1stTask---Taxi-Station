@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace LibraryTaxi.Enum
 {
-    class TaxiTypes
+    public enum TaxiTypes
     {
+        Cargo,
+        Pass,
+        Ricksha
     }
 }
