@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LibraryTaxi.Factory
 {
-    class ConcreteFactoryCreator
+    public sealed class ConcreteFactoryCreator
     {
         IDictionary<TaxiTypes, TaxiFactory> factories;
 
