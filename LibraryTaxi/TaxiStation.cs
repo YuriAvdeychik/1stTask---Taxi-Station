@@ -11,21 +11,35 @@ namespace LibraryTaxi
 {
     public class TaxiStation
     {
-        private TaxiFactory taxiFactory;
-        private ConcreteFactoryCreator factoryCreator;
-        private List<ITaxi> taxis;
+        private TaxiFactory _taxiFactory;
+        private ConcreteFactoryCreator _factoryCreator;
+        private List<ITaxi> _taxis;
 
         public TaxiStation()
         {
-            factoryCreator = new ConcreteFactoryCreator();
-            taxis = new List<ITaxi>();
+            _factoryCreator = new ConcreteFactoryCreator();
+            _taxis = new List<ITaxi>();
         }
 
         public void CreateTaxi(TaxiTypes taxiType, int speed, int price, int cons)
         {
-            taxiFactory = factoryCreator.GetConcreteFactory(taxiType);
-            ITaxi taxi = taxiFactory.CreateTaxi(speed, price, cons);
-            taxis.Add(taxi);
+            _taxiFactory = _factoryCreator.GetConcreteFactory(taxiType);
+            ITaxi taxi = _taxiFactory.CreateTaxi(speed, price, cons);
+            _taxis.Add(taxi);
+        }
+
+        public List<ITaxi> FindTaxiBySpeed(int minSpeed, int maxSpeed)
+        {
+            List<ITaxi> _findedTaxis = new List<ITaxi>();
+
+            foreach (ITaxi taxi in _taxis)
+            {
+                if (taxi.Speed>=minSpeed && taxi.Speed<=maxSpeed)
+                {
+                    _findedTaxis.Add(taxi);
+                }
+            }
+            return _findedTaxis;
         }
     }
 }
