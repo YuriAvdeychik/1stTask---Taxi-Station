@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace LibraryTaxi.Taxi
 {
-    class Ricksha : ITaxi
+    class RickshaTaxi : ITaxi
     {
         public int Speed { get; }
         public int Price { get; }
         public int Cons { get; }
 
-        public Ricksha(int speed, int price, int cons)
+        public RickshaTaxi(int speed, int price, int cons)
         {
             Speed = speed;
             Price = price;

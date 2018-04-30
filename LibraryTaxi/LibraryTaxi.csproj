@@ -45,6 +45,8 @@
   <ItemGroup>
     <Compile Include="Enum\TaxiTypes.cs" />
     <Compile Include="Factory\ConcreteFactories\CargoTaxiFactory.cs" />
+    <Compile Include="Factory\ConcreteFactories\PassTaxiFactory.cs" />
+    <Compile Include="Factory\ConcreteFactories\RickshaTaxiFactory.cs" />
     <Compile Include="Factory\ConcreteFactoryCreator.cs" />
     <Compile Include="Factory\TaxiFactory.cs" />
     <Compile Include="Interface\ITaxi.cs" />
@@ -52,7 +54,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Taxis\CargoTaxi.cs" />
     <Compile Include="Taxis\PassTaxi.cs" />
-    <Compile Include="Taxis\Ricksha.cs" />
+    <Compile Include="Taxis\RickshaTaxi.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
