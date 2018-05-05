@@ -28,7 +28,7 @@ namespace LibraryTaxi
             _taxis.Add(taxi);
         }
 
-        public List<ITaxi> FindTaxiBySpeed(int minSpeed, int maxSpeed)
+         public List<ITaxi> FindTaxiBySpeed(int minSpeed, int maxSpeed)
         {
             List<ITaxi> _findedTaxis = new List<ITaxi>();
 
@@ -40,6 +40,11 @@ namespace LibraryTaxi
                 }
             }
             return _findedTaxis;
+        }
+
+        public int TotalCount()
+        {
+            return _taxis.Sum(x => x.Price);
         }
     }
 }
