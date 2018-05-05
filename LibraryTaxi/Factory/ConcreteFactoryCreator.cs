@@ -10,7 +10,7 @@ namespace LibraryTaxi.Factory
 {
     public sealed class ConcreteFactoryCreator
     {
-        IDictionary<TaxiTypes, TaxiFactory> _factories;
+        Dictionary<TaxiTypes, TaxiFactory> _factories;
 
         public ConcreteFactoryCreator()
         {

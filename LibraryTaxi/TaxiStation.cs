@@ -28,23 +28,43 @@ namespace LibraryTaxi
             _taxis.Add(taxi);
         }
 
-         public List<ITaxi> FindTaxiBySpeed(int minSpeed, int maxSpeed)
+        public void ShowTaxis()
         {
-            List<ITaxi> _findedTaxis = new List<ITaxi>();
+            Console.WriteLine("Number Speed Price Consumption");
+            foreach (var item in _taxis)
+            {
+                Console.WriteLine("{0} {1} {2}", item.Speed, item.Price, item.Cons);
+            }
+            Console.WriteLine();
+        }
+
+        public List<ITaxi> FindTaxiBySpeed(int minSpeed, int maxSpeed)
+        {
+            List<ITaxi> findedTaxis = new List<ITaxi>();
 
             foreach (ITaxi taxi in _taxis)
             {
                 if (taxi.Speed>=minSpeed && taxi.Speed<=maxSpeed)
                 {
-                    _findedTaxis.Add(taxi);
+                    findedTaxis.Add(taxi);
                 }
             }
-            return _findedTaxis;
+            return findedTaxis;
         }
 
-        public int TotalCount()
+        public int TotalTaxisCount()
         {
             return _taxis.Sum(x => x.Price);
+        }
+
+        public void SortTaxis()
+        {
+            var temp = _taxis.OrderBy(x => x.Cons).ToList();
+            _taxis.Clear();
+            foreach (var item in temp)
+            {
+                _taxis.Add(item);
+            }
         }
     }
 }
