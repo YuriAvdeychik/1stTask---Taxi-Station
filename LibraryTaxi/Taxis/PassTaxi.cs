@@ -19,5 +19,10 @@ namespace LibraryTaxi.Taxi
             Price = price;
             Cons = cons;
         }
+
+        public void GoToWork()
+        {
+            Console.WriteLine("Pass taxi moved on work!");
+        }
     }
 }

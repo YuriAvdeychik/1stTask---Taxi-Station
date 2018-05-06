@@ -11,5 +11,7 @@ namespace LibraryTaxi.Interface
         int Speed { get; }
         int Price { get; }
         int Cons { get; }
+
+        void GoToWork();
     }
 }

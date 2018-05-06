@@ -7,9 +7,28 @@ using System.Threading.Tasks;
 
 namespace LibraryTaxi.Taxi
 {
-    class CargoTaxi : ITaxi
+    public class CargoTaxi : ITaxi
     {
-        public int Speed { get; }
+        private int speed;
+        public int Speed
+        {
+            get
+            {
+                return speed;
+            }
+
+            set
+            {
+                if (value < 0)
+                {
+                    speed = 0;   
+                }
+                else
+                {
+                    speed = value;
+                }
+            }
+        }
         public int Price { get; }
         public int Cons { get; }
         
@@ -18,6 +37,11 @@ namespace LibraryTaxi.Taxi
             Speed = speed;
             Price = price;
             Cons = cons;
+        }
+
+        public void GoToWork()
+        {
+            Console.WriteLine("Cargo taxi moved on work!");
         }
     }
 }

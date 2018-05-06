@@ -30,10 +30,10 @@ namespace LibraryTaxi
 
         public void ShowTaxis()
         {
-            Console.WriteLine("Number Speed Price Consumption");
-            foreach (var item in _taxis)
+            Console.WriteLine("Type\t\tSpeed\tPrice\tConsumption");
+            foreach (var taxi in _taxis)
             {
-                Console.WriteLine("{0} {1} {2}", item.Speed, item.Price, item.Cons);
+                Console.WriteLine("{0}\t{1}\t{2}\t{3}", taxi.GetType().Name, taxi.Speed, taxi.Price, taxi.Cons);
             }
             Console.WriteLine();
         }
@@ -46,7 +46,7 @@ namespace LibraryTaxi
             {
                 if (taxi.Speed>=minSpeed && taxi.Speed<=maxSpeed)
                 {
-                    findedTaxis.Add(taxi);
+                    findedTaxis.Add(taxi);                    
                 }
             }
             return findedTaxis;
@@ -57,14 +57,30 @@ namespace LibraryTaxi
             return _taxis.Sum(x => x.Price);
         }
 
-        public void SortTaxis()
+        public List<ITaxi> SortTaxisByCons()
         {
-            var temp = _taxis.OrderBy(x => x.Cons).ToList();
-            _taxis.Clear();
-            foreach (var item in temp)
+            List<ITaxi> sortedTaxis = _taxis.OrderBy(x => x.Cons).ToList();
+            return sortedTaxis;
+        }
+
+        public void SendTaxisToWork()
+        {
+            foreach (var taxi in _taxis)
+                taxi.GoToWork();
+        }
+
+        public void RemoveTaxi(ITaxi taxi)
+        {
+            if (taxi != null)
             {
-                _taxis.Add(item);
+                _taxis.Remove(taxi);
             }
+        }
+
+        public void RemoveTaxi(int speed)
+        {
+            ITaxi taxi = _taxis.First(x => x.Speed == speed);
+            this.RemoveTaxi(taxi);
         }
     }
 }
