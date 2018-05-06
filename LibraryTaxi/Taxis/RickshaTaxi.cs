@@ -13,6 +13,7 @@ namespace LibraryTaxi.Taxi
         public int Speed { get; }
         public int Price { get; set; }
         public int Cons { get; set; }
+        public int Capacity { get; }
 
         public RickshaTaxi(int speed, int price, int cons)
         {

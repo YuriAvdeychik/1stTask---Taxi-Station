@@ -12,7 +12,7 @@ namespace LibraryTaxi.Interface
         int Speed { get;}
         int Price { get; set; }
         int Cons { get; set; }
-
+        int Capacity { get; }
         void GoToWork();
     }
 }

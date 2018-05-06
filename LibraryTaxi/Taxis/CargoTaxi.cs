@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LibraryTaxi.Taxi
 {
-    class CargoTaxi : ITaxi, ICargo
+    class CargoTaxi : ITaxi
     {
         public string Color { get; }
         public int Speed { get; }

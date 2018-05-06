@@ -10,13 +10,9 @@ namespace LibraryTaxi.Factory.ConcreteFactories
 {
     class PassTaxiFactory : TaxiFactory
     {
-        public override ITaxi CreateTaxi(int speed, int price, int cons)
+        public override ITaxi CreateTaxi(int speed, int price, int cons, int capasity=0)
         {
             return new PassTaxi(speed, price, cons);
-        }
-        public override ITaxi CreateTaxi(int speed, int price, int cons, int capacity)
-        {
-            throw new NotImplementedException();
         }
     }
 }

@@ -21,17 +21,10 @@ namespace LibraryTaxi
             _taxis = new List<ITaxi>();
         }
 
-        public void CreateTaxi(TaxiTypes taxiType, int speed, int price, int cons)
+        public void CreateTaxi(TaxiTypes taxiType, int speed, int price, int cons, int capasity=0)
         {
             _taxiFactory = _factoryCreator.GetConcreteFactory(taxiType);
-            ITaxi taxi = _taxiFactory.CreateTaxi(speed, price, cons);
-            _taxis.Add(taxi);
-        }
-
-        public void CreateTaxi(TaxiTypes taxiType, int speed, int price, int cons, int capacity)
-        {
-            _taxiFactory = _factoryCreator.GetConcreteFactory(taxiType);
-            ITaxi taxi = _taxiFactory.CreateTaxi(speed, price, cons, capacity);
+            ITaxi taxi = _taxiFactory.CreateTaxi(speed, price, cons, capasity);
             _taxis.Add(taxi);
         }
 
@@ -40,7 +33,7 @@ namespace LibraryTaxi
             Console.WriteLine("Type\t\tSpeed\tPrice\tConsumption");
             foreach (var taxi in _taxis)
             {
-                Console.WriteLine("{0}\t{1}\t{2}\t{3}", taxi.GetType().Name, taxi.Speed, taxi.Price, taxi.Cons);
+                Console.WriteLine("{0}\t{1}\t{2}\t{3}\t{4}", taxi.GetType().Name, taxi.Speed, taxi.Price, taxi.Cons, taxi.Capacity);
             }
             Console.WriteLine();
         }

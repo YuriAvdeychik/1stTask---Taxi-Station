@@ -14,9 +14,5 @@ namespace LibraryTaxi.Factory.ConcreteFactories
         {
             return new CargoTaxi(speed, price, cons, capacity);
         }
-        public override ITaxi CreateTaxi(int speed, int price, int cons)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

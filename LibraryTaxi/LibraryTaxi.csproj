@@ -49,7 +49,6 @@
     <Compile Include="Factory\ConcreteFactories\RickshaTaxiFactory.cs" />
     <Compile Include="Factory\ConcreteFactoryCreator.cs" />
     <Compile Include="Factory\TaxiFactory.cs" />
-    <Compile Include="Interface\ICargo.cs" />
     <Compile Include="Interface\ITaxi.cs" />
     <Compile Include="TaxiStation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
