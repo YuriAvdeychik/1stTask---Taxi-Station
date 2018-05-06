@@ -1,4 +1,5 @@
-﻿using LibraryTaxi.Interface;
+﻿using LibraryTaxi.Enum;
+using LibraryTaxi.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,6 @@ namespace LibraryTaxi.Factory
 {
     public abstract class TaxiFactory
     {
-        public abstract ITaxi CreateTaxi(int speed, int price, int cons, int capacity = 0);
+        public abstract ITaxi CreateTaxi(TaxiTypes taxiType, int speed, int price, int consumption, int capacity = 0);
     }
 }

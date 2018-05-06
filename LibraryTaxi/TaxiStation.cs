@@ -21,19 +21,19 @@ namespace LibraryTaxi
             _taxis = new List<ITaxi>();
         }
 
-        public void CreateTaxi(TaxiTypes taxiType, int speed, int price, int cons, int capasity=0)
+        public void CreateTaxi(TaxiTypes taxiType, int speed, int price, int consumption, int capasity=0)
         {
             _taxiFactory = _factoryCreator.GetConcreteFactory(taxiType);
-            ITaxi taxi = _taxiFactory.CreateTaxi(speed, price, cons, capasity);
+            ITaxi taxi = _taxiFactory.CreateTaxi(taxiType, speed, price, consumption, capasity);
             _taxis.Add(taxi);
         }
 
         public void ShowTaxis()
         {
-            Console.WriteLine("Type\t\tSpeed\tPrice\tConsumption");
+            Console.WriteLine("Type\tSpeed\tPrice\tConsumption\tCapasity");
             foreach (var taxi in _taxis)
             {
-                Console.WriteLine("{0}\t{1}\t{2}\t{3}\t{4}", taxi.GetType().Name, taxi.Speed, taxi.Price, taxi.Cons, taxi.Capacity);
+                Console.WriteLine("{0}\t{1}\t{2}\t{3}\t\t{4}", taxi.TaxiType, taxi.Speed, taxi.Price, taxi.Consumption, taxi.Capacity);
             }
             Console.WriteLine();
         }
@@ -59,7 +59,7 @@ namespace LibraryTaxi
 
         public List<ITaxi> SortTaxisByCons()
         {
-            List<ITaxi> sortedTaxis = _taxis.OrderBy(x => x.Cons).ToList();
+            List<ITaxi> sortedTaxis = _taxis.OrderBy(x => x.Consumption).ToList();
             return sortedTaxis;
         }
 
@@ -77,9 +77,9 @@ namespace LibraryTaxi
             }
         }
 
-        public void RemoveTaxi(int cons)
+        public void RemoveTaxi(int consumption)
         {
-            ITaxi taxi = _taxis.First(x => x.Cons == cons);
+            ITaxi taxi = _taxis.First(x => x.Consumption == consumption);
             _taxis.Remove(taxi);
         }
     }

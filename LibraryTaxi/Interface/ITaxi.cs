@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LibraryTaxi.Enum;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,10 +9,10 @@ namespace LibraryTaxi.Interface
 {
     public interface ITaxi
     {
-        string Color { get; }
+        TaxiTypes TaxiType { get; }
         int Speed { get;}
         int Price { get; set; }
-        int Cons { get; set; }
+        int Consumption { get; set; }
         int Capacity { get; }
         void GoToWork();
     }

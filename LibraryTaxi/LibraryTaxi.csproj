@@ -43,6 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutoService.cs" />
+    <Compile Include="Interface\IExtraditionable.cs" />
+    <Compile Include="Interface\IRepairable.cs" />
+    <Compile Include="MigrationService.cs" />
     <Compile Include="Enum\TaxiTypes.cs" />
     <Compile Include="Factory\ConcreteFactories\CargoTaxiFactory.cs" />
     <Compile Include="Factory\ConcreteFactories\PassTaxiFactory.cs" />

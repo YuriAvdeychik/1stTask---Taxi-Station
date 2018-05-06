@@ -1,4 +1,5 @@
-﻿using LibraryTaxi.Interface;
+﻿using LibraryTaxi.Enum;
+using LibraryTaxi.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,15 +8,15 @@ using System.Threading.Tasks;
 
 namespace LibraryTaxi.Taxi
 {
-    class CargoTaxi : ITaxi
+    class CargoTaxi : ITaxi, IRepairable
     {
-        public string Color { get; }
+        public TaxiTypes TaxiType { get; }
         public int Speed { get; }
         public int Price { get; set; }
-        public int Cons { get; set; }
+        public int Consumption { get; set; }
         public int Capacity { get;}
 
-        public CargoTaxi(int speed, int price, int cons, int capacity)
+        public CargoTaxi(TaxiTypes taxiType, int speed, int price, int consumption, int capacity)
         {
             if (speed > 0)
             {
@@ -25,19 +26,25 @@ namespace LibraryTaxi.Taxi
             {
                 Price = price;
             }
-            if (cons > 0)
+            if (consumption > 0)
             {
-                Cons = cons;
+                Consumption = consumption;
             }
             if (capacity > 0)
             {
                 Capacity = capacity;
             }
+            TaxiType = taxiType;
         }
 
         public void GoToWork()
         {
             Console.WriteLine("Cargo taxi moved on work!");
+        }
+
+        public void Repair()
+        {
+            Console.WriteLine("Cargo taxi has been moved to autoservice");
         }
 
     }

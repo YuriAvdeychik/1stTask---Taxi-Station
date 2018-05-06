@@ -36,28 +36,31 @@ namespace DemoTaxi
             var sortedTaxisByCons = taxiStation.SortTaxisByCons();
             foreach (var item in sortedTaxisByCons)
             {
-                Console.WriteLine("{0}\t{1}\t{2}\t{3}",item.GetType().Name, item.Speed, item.Price, item.Cons);
+                Console.WriteLine("{0}\t{1}\t{2}\t{3}",item.GetType().Name, item.Speed, item.Price, item.Consumption);
             }
 
             Console.WriteLine();
             taxiStation.SendTaxisToWork();
 
-            //CargoTaxi cargoTaxi = new CargoTaxi(140, -1, 10);
-            //Console.WriteLine("{0} {1} {2}", cargoTaxi.Speed, cargoTaxi.Price, cargoTaxi.Cons);
-
-            //List<ITaxi> removedTaxis = taxiStation.();
-            //foreach (var taxi in removedTaxis)
-            //{
-            //    taxiStation.RemoveTaxi(10);
-            //}
+            List<ITaxi> removedTaxis = taxiStation.FindTaxiBySpeed(140, 200);
+            foreach (var taxi in removedTaxis)
+            {
+                taxiStation.RemoveTaxi(taxi);
+            }
 
             Console.WriteLine("\n\tTAXI STATION AFTER REMOVING CARS");
             Console.WriteLine("Type\t\tSpeed\tPrice\tConsumption");
             var sortedTaxisByCons1 = taxiStation.SortTaxisByCons();
             foreach (var item in sortedTaxisByCons1)
             {
-                Console.WriteLine("{0}\t{1}\t{2}\t{3}", item.GetType().Name, item.Speed, item.Price, item.Cons);
+                Console.WriteLine("{0}\t{1}\t{2}\t{3}", item.GetType().Name, item.Speed, item.Price, item.Consumption);
             }
+
+            Console.WriteLine();
+            MigrationService migrationService = new MigrationService();
+            migrationService.MigrationServiceWork();
+            AutoService autoService = new AutoService();
+            autoService.AutoServiceWork();
 
             Console.ReadKey();
         }

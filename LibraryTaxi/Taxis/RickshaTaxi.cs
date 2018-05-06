@@ -1,4 +1,5 @@
-﻿using LibraryTaxi.Interface;
+﻿using LibraryTaxi.Enum;
+using LibraryTaxi.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,15 +8,15 @@ using System.Threading.Tasks;
 
 namespace LibraryTaxi.Taxi
 {
-    class RickshaTaxi : ITaxi
+    public class RickshaTaxi : ITaxi, IExtraditionable
     {
-        public string Color { get; }
+        public TaxiTypes TaxiType { get; }
         public int Speed { get; }
         public int Price { get; set; }
-        public int Cons { get; set; }
+        public int Consumption { get; set; }
         public int Capacity { get; }
 
-        public RickshaTaxi(int speed, int price, int cons)
+        public RickshaTaxi(TaxiTypes taxiType, int speed, int price, int consumption)
         {
             if (speed > 0)
             {
@@ -25,15 +26,21 @@ namespace LibraryTaxi.Taxi
             {
                 Price = price;
             }
-            if (cons > 0)
+            if (consumption > 0)
             {
-                Cons = cons;
+                Consumption = consumption;
             }
+            TaxiType = taxiType;
         }
 
         public void GoToWork()
         {
             Console.WriteLine("Ricksha taxi moved on work!");
+        }
+
+        public void Extradition()
+        {
+            Console.WriteLine("Ricksha has been extradited to Vietnam");
         }
     }
 }
