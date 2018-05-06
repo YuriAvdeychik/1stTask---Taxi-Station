@@ -7,41 +7,38 @@ using System.Threading.Tasks;
 
 namespace LibraryTaxi.Taxi
 {
-    public class CargoTaxi : ITaxi
+    class CargoTaxi : ITaxi, ICargo
     {
-        private int speed;
-        public int Speed
-        {
-            get
-            {
-                return speed;
-            }
+        public string Color { get; }
+        public int Speed { get; }
+        public int Price { get; set; }
+        public int Cons { get; set; }
+        public int Capacity { get;}
 
-            set
-            {
-                if (value < 0)
-                {
-                    speed = 0;   
-                }
-                else
-                {
-                    speed = value;
-                }
-            }
-        }
-        public int Price { get; }
-        public int Cons { get; }
-        
-        public CargoTaxi(int speed, int price, int cons)
+        public CargoTaxi(int speed, int price, int cons, int capacity)
         {
-            Speed = speed;
-            Price = price;
-            Cons = cons;
+            if (speed > 0)
+            {
+                Speed = speed;
+            }
+            if (price > 0)
+            {
+                Price = price;
+            }
+            if (cons > 0)
+            {
+                Cons = cons;
+            }
+            if (capacity > 0)
+            {
+                Capacity = capacity;
+            }
         }
 
         public void GoToWork()
         {
             Console.WriteLine("Cargo taxi moved on work!");
         }
+
     }
 }

@@ -1,7 +1,6 @@
 ﻿using LibraryTaxi;
 using LibraryTaxi.Enum;
 using LibraryTaxi.Interface;
-using LibraryTaxi.Taxi;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,9 +14,9 @@ namespace DemoTaxi
         static void Main(string[] args)
         {
             TaxiStation taxiStation = new TaxiStation();
-            taxiStation.CreateTaxi(TaxiTypes.Cargo, 100, 1500, 10);
-            taxiStation.CreateTaxi(TaxiTypes.Pass, 150, 1000, 5);
-            taxiStation.CreateTaxi(TaxiTypes.Ricksha, 50, 500, 1);
+            taxiStation.CreateTaxi(TaxiTypes.Cargo, -1, 1500, 10, 15);
+            taxiStation.CreateTaxi(TaxiTypes.Pass, 150, -1, 5);
+            taxiStation.CreateTaxi(TaxiTypes.Ricksha, 50, 500, -1);
 
             Console.WriteLine("\tUNSORTED TAXI STATION");
             taxiStation.ShowTaxis();
@@ -43,14 +42,14 @@ namespace DemoTaxi
             Console.WriteLine();
             taxiStation.SendTaxisToWork();
 
-            //CargoTaxi cargoTaxi = new CargoTaxi(-10, 2000, 10);
-            //Console.WriteLine(cargoTaxi.Speed);
+            //CargoTaxi cargoTaxi = new CargoTaxi(140, -1, 10);
+            //Console.WriteLine("{0} {1} {2}", cargoTaxi.Speed, cargoTaxi.Price, cargoTaxi.Cons);
 
-            List<ITaxi> removedTaxis = taxiStation.FindTaxiBySpeed(140, 200);
-            foreach (var taxi in removedTaxis)
-            {
-                taxiStation.RemoveTaxi(taxi);
-            }
+            //List<ITaxi> removedTaxis = taxiStation.();
+            //foreach (var taxi in removedTaxis)
+            //{
+            //    taxiStation.RemoveTaxi(10);
+            //}
 
             Console.WriteLine("\n\tTAXI STATION AFTER REMOVING CARS");
             Console.WriteLine("Type\t\tSpeed\tPrice\tConsumption");

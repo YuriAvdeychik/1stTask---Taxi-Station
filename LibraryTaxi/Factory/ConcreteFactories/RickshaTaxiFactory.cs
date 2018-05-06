@@ -14,5 +14,9 @@ namespace LibraryTaxi.Factory.ConcreteFactories
         {
             return new RickshaTaxi(speed, price, cons);
         }
+        public override ITaxi CreateTaxi(int speed, int price, int cons, int capacity)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

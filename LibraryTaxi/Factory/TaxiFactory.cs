@@ -10,5 +10,6 @@ namespace LibraryTaxi.Factory
     public abstract class TaxiFactory
     {
         public abstract ITaxi CreateTaxi(int speed, int price, int cons);
+        public abstract ITaxi CreateTaxi(int speed, int price, int cons, int capacity);
     }
 }

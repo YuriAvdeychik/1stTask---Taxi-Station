@@ -8,9 +8,10 @@ namespace LibraryTaxi.Interface
 {
     public interface ITaxi
     {
-        int Speed { get; }
-        int Price { get; }
-        int Cons { get; }
+        string Color { get; }
+        int Speed { get;}
+        int Price { get; set; }
+        int Cons { get; set; }
 
         void GoToWork();
     }
