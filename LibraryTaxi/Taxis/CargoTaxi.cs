@@ -4,18 +4,19 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace LibraryTaxi.Taxi
 {
-    class CargoTaxi : ITaxi, IRepairable
+    class CargoTaxi : ITaxi, IFuelable
     {
         public TaxiTypes TaxiType { get; }
         public int Speed { get; }
         public int Price { get; set; }
         public int Consumption { get; set; }
         public int Capacity { get;}
-        public bool OnRepair { get; set; }
+        public bool IsReadyToWork { get; set; }
 
         public CargoTaxi(TaxiTypes taxiType, int speed, int price, int consumption, int capacity)
         {
@@ -36,7 +37,23 @@ namespace LibraryTaxi.Taxi
                 Capacity = capacity;
             }
             TaxiType = taxiType;
-            OnRepair = false; 
+            if (consumption == 0)
+            {
+                IsReadyToWork = false;
+            }
+            else
+            {
+                IsReadyToWork = true;
+            }
+        }
+
+        public void FuelUp(int fuelVolume)
+        {
+            IsReadyToWork = false;
+            Console.WriteLine("Cargo taxi if fueling up");
+            Thread.Sleep(500);
+            Consumption += fuelVolume;
+            IsReadyToWork = true;
         }
 
         public void GoToWork()

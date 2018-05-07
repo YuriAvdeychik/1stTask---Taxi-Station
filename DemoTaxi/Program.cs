@@ -16,15 +16,15 @@ namespace DemoTaxi
             TaxiStation taxiStation = new TaxiStation();
             taxiStation.CreateTaxi(TaxiTypes.Cargo, 100, 1500, 10, 15);
             taxiStation.CreateTaxi(TaxiTypes.Pass, 150, 2000, 5);
-            taxiStation.CreateTaxi(TaxiTypes.Ricksha, 50, 500, 1);
-            taxiStation.CreateTaxi(TaxiTypes.Ricksha, -1, -1, 10);
+            taxiStation.CreateTaxi(TaxiTypes.Ricksha, 50, 500, 0);
+            taxiStation.CreateTaxi(TaxiTypes.Ricksha, 40, 400, 2);
 
             Console.WriteLine("\tUNSORTED TAXI STATION");
             taxiStation.ShowTaxis();
 
             Console.WriteLine("Total taxi station count is {0}", taxiStation.TotalTaxisCount());
 
-            int minSpeed = 10;
+            int minSpeed = 90;
             int maxSpeed = 110;
             var findTaxiBySpeed = taxiStation.FindTaxiBySpeed(minSpeed, maxSpeed);
             foreach (var taxi in findTaxiBySpeed)
@@ -43,14 +43,14 @@ namespace DemoTaxi
             Console.WriteLine();
             taxiStation.SendTaxisToWork();
 
-            //List<ITaxi> brokenTaxis = taxiStation.FindTaxiBySpeed(90, 200);
-            //foreach (var taxi in brokenTaxis)
-            //{
-            //    taxiStation.BrokeTaxi(taxi);
-            //}
-            
-            //List<ITaxi> brokenTaxis = taxiStation.SortTaxisByCons();
-            //foreach (var taxi in brokenTaxis)
+            List<ITaxi> brokenTaxis = taxiStation.FindTaxiBySpeed(90, 200);
+            foreach (var taxi in brokenTaxis)
+            {
+                taxiStation.BrokeTaxi(taxi);
+            }
+
+            //List<ITaxi> brokenTaxis1 = taxiStation.SortTaxisByCons();
+            //foreach (var taxi in brokenTaxis1)
             //{
             //    taxiStation.BrokeTaxi(10);
             //}
@@ -61,13 +61,12 @@ namespace DemoTaxi
             Console.WriteLine("\tBROKEN TAXIS");
             taxiStation.ShowRemovedTaxis();
 
-            //MigrationService migrationService = new MigrationService();
-            //migrationService.MigrationServiceWork();
+            FuelStation fuelStation = new FuelStation();
+            IFuelable taxi1 = taxiStation.FindTaxiByConsumption(0);
+            fuelStation.FuelStationWork(taxi1, 10);
 
-            AutoService autoService = new AutoService();
-            autoService.AutoServiceWork();
-
-
+            Console.WriteLine();
+            taxiStation.SendTaxisToWork();
 
             Console.ReadKey();
         }

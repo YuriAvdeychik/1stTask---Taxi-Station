@@ -9,15 +9,11 @@ using System.Threading.Tasks;
 
 namespace LibraryTaxi
 {
-    public class AutoService
+    public class FuelStation
     {
-        IRepairable taxi;
-        taxi.OnRepair = true;
-
-        public void AutoServiceWork()
+        public void FuelStationWork(IFuelable taxi, int fuelVollume)
         {
-            cargoTaxi.Repair();
-            passTaxi.Repair();
+            taxi.FuelUp(fuelVollume);
         }
     }
 }

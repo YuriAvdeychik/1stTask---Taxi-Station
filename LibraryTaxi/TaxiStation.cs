@@ -13,7 +13,7 @@ namespace LibraryTaxi
     {
         private TaxiFactory _taxiFactory;
         private ConcreteFactoryCreator _factoryCreator;
-        private List<ITaxi> _taxis;
+        public List<ITaxi> _taxis;
         public List<ITaxi> _brokenTaxis;
 
         public TaxiStation()
@@ -54,6 +54,18 @@ namespace LibraryTaxi
             return findedTaxis;
         }
 
+        public ITaxi FindTaxiByConsumption(int consumption)
+        {
+            foreach (ITaxi taxi in _taxis)
+            {
+                if (taxi.Consumption == consumption)
+                {
+                    return taxi;
+                }
+            }
+            return null;
+        }
+
         public int TotalTaxisCount()
         {
             return _taxis.Sum(x => x.Price);
@@ -67,8 +79,10 @@ namespace LibraryTaxi
 
         public void SendTaxisToWork()
         {
-            foreach (var taxi in _taxis)
+            foreach (var taxi in _taxis)  if (taxi.IsReadyToWork == true )
+            {
                 taxi.GoToWork();
+            }
         }
 
         public void BrokeTaxi(ITaxi taxi)
@@ -90,14 +104,13 @@ namespace LibraryTaxi
             Console.WriteLine();
         }
 
-        public void BrokeTaxi(int consumption)
-        {
-            if (consumption != 0)
-            {
-                ITaxi taxi = _taxis.FirstOrDefault(x => x.Consumption == consumption);
-                _taxis.Remove(taxi);
-            }
-
-        }
+        //public void BrokeTaxi(int consumption)
+        //{
+        //    if (consumption != 0)
+        //    {
+        //        ITaxi taxi = _taxis.FirstOrDefault(x => x.Consumption == consumption);
+        //        _taxis.Remove(taxi);
+        //    }
+        //}
     }
 }

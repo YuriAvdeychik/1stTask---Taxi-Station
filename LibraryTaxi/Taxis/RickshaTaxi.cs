@@ -15,6 +15,7 @@ namespace LibraryTaxi.Taxi
         public int Price { get; set; }
         public int Consumption { get; set; }
         public int Capacity { get; }
+        public bool IsReadyToWork { get; set; }
 
         public RickshaTaxi(TaxiTypes taxiType, int speed, int price, int consumption)
         {
@@ -31,6 +32,7 @@ namespace LibraryTaxi.Taxi
                 Consumption = consumption;
             }
             TaxiType = taxiType;
+            IsReadyToWork = true;
         }
 
         public void GoToWork()

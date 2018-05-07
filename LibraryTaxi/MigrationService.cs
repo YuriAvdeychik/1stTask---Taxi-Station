@@ -11,8 +11,6 @@ namespace LibraryTaxi
 {
     public class MigrationService
     {
-        List<ITaxi> taxisForExtradition;
-
         public MigrationService()
         {
             TaxiStation taxis = new TaxiStation();

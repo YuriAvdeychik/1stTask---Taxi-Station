@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace LibraryTaxi.Interface
 {
-    public interface IRepairable
+    public interface IFuelable
     {
-        bool OnRepair { get; set; }
+        void FuelUp(int fuelVolume);
     }
 }

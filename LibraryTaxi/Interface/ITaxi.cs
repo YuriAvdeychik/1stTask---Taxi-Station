@@ -15,5 +15,6 @@ namespace LibraryTaxi.Interface
         int Consumption { get; set; }
         int Capacity { get; }
         void GoToWork();
+        bool IsReadyToWork { get; set; }
     }
 }
