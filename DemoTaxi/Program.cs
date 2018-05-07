@@ -14,9 +14,10 @@ namespace DemoTaxi
         static void Main(string[] args)
         {
             TaxiStation taxiStation = new TaxiStation();
-            taxiStation.CreateTaxi(TaxiTypes.Cargo, -1, 1500, 10, 15);
-            taxiStation.CreateTaxi(TaxiTypes.Pass, 150, -1, 5);
-            taxiStation.CreateTaxi(TaxiTypes.Ricksha, 50, 500, -1);
+            taxiStation.CreateTaxi(TaxiTypes.Cargo, 100, 1500, 10, 15);
+            taxiStation.CreateTaxi(TaxiTypes.Pass, 150, 2000, 5);
+            taxiStation.CreateTaxi(TaxiTypes.Ricksha, 50, 500, 1);
+            taxiStation.CreateTaxi(TaxiTypes.Ricksha, -1, -1, 10);
 
             Console.WriteLine("\tUNSORTED TAXI STATION");
             taxiStation.ShowTaxis();
@@ -32,32 +33,33 @@ namespace DemoTaxi
                     taxi.GetType().Name, taxi.Speed, minSpeed, maxSpeed);
             }
 
-            Console.WriteLine("\n\tSORTED TAXI STATION");
-            Console.WriteLine("Type\t\tSpeed\tPrice\tConsumption\tCapasity");
+            Console.WriteLine("\n\tSORTED TAXI STATION\nType\tSpeed\tPrice\tConsumption\tCapasity");
             var sortedTaxisByCons = taxiStation.SortTaxisByCons();
             foreach (var taxi in sortedTaxisByCons)
             {
-                Console.WriteLine("{0}\t{1}\t{2}\t{3}\t\t{4}", taxi.GetType().Name, taxi.Speed, taxi.Price, taxi.Consumption, taxi.Capacity);
+                Console.WriteLine("{0}\t{1}\t{2}\t{3}\t\t{4}", taxi.TaxiType, taxi.Speed, taxi.Price, taxi.Consumption, taxi.Capacity);
             }
 
             Console.WriteLine();
             taxiStation.SendTaxisToWork();
 
-            List<ITaxi> removedTaxis = taxiStation.FindTaxiBySpeed(140, 200);
-            foreach (var taxi in removedTaxis)
-            {
-                taxiStation.BrokeTaxi(taxi);
-            }
+            //List<ITaxi> brokenTaxis = taxiStation.FindTaxiBySpeed(90, 200);
+            //foreach (var taxi in brokenTaxis)
+            //{
+            //    taxiStation.BrokeTaxi(taxi);
+            //}
+            
+            //List<ITaxi> brokenTaxis = taxiStation.SortTaxisByCons();
+            //foreach (var taxi in brokenTaxis)
+            //{
+            //    taxiStation.BrokeTaxi(10);
+            //}
 
-            Console.WriteLine("\n\tTAXI STATION AFTER REMOVING CARS");
-            Console.WriteLine("Type\t\tSpeed\tPrice\tConsumption\tCapasity");
-            var sortedTaxisByCons1 = taxiStation.SortTaxisByCons();
-            foreach (var taxi in sortedTaxisByCons1)
-            {
-                Console.WriteLine("{0}\t{1}\t{2}\t{3}\t\t{4}", taxi.GetType().Name, taxi.Speed, taxi.Price, taxi.Consumption, taxi.Capacity);
-            }
+            Console.WriteLine("\n\tTAXI STATION AFTER BROKING CARS");
+            taxiStation.ShowTaxis();
 
-            Console.WriteLine();
+            Console.WriteLine("\tBROKEN TAXIS");
+            taxiStation.ShowRemovedTaxis();
 
             //MigrationService migrationService = new MigrationService();
             //migrationService.MigrationServiceWork();

@@ -14,13 +14,13 @@ namespace LibraryTaxi
         private TaxiFactory _taxiFactory;
         private ConcreteFactoryCreator _factoryCreator;
         private List<ITaxi> _taxis;
-        public List<ITaxi> _Taxis;
+        public List<ITaxi> _brokenTaxis;
 
         public TaxiStation()
         {
             _factoryCreator = new ConcreteFactoryCreator();
             _taxis = new List<ITaxi>();
-
+            _brokenTaxis = new List<ITaxi>();
         }
 
         public void CreateTaxi(TaxiTypes taxiType, int speed, int price, int consumption, int capasity = 0)
@@ -76,14 +76,28 @@ namespace LibraryTaxi
             if (taxi != null)
             {
                 _taxis.Remove(taxi);
-                _Taxis = _taxis;
+                _brokenTaxis.Add(taxi);
             }
+        }
+
+        public void ShowRemovedTaxis()
+        {
+            Console.WriteLine("Type\tSpeed\tPrice\tConsumption\tCapasity");
+            foreach (var taxi in _brokenTaxis)
+            {
+                Console.WriteLine("{0}\t{1}\t{2}\t{3}\t\t{4}", taxi.TaxiType, taxi.Speed, taxi.Price, taxi.Consumption, taxi.Capacity);
+            }
+            Console.WriteLine();
         }
 
         public void BrokeTaxi(int consumption)
         {
-            ITaxi taxi = _taxis.First(x => x.Consumption == consumption);
-            _taxis.Remove(taxi);
+            if (consumption != null)
+            {
+                ITaxi taxi = _taxis.FirstOrDefault(x => x.Consumption == consumption);
+                _taxis.Remove(taxi);
+            }
+
         }
     }
 }

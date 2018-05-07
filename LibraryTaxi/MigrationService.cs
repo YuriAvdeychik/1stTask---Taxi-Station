@@ -16,15 +16,15 @@ namespace LibraryTaxi
         public MigrationService()
         {
             TaxiStation taxis = new TaxiStation();
-            List<ITaxi> taxisForExtradition = taxis._Taxis;
+            List<ITaxi> taxisForExtradition = taxis._brokenTaxis;
         }
 
-        public void MigrationServiceWork()
-        {
-            foreach (var taxi in taxisForExtradition)
-            {
-                taxi.Extradition();
-            }
-        }
+        //public void MigrationServiceWork()
+        //{
+        //    foreach (var taxi in taxisForExtradition)
+        //    {
+        //        taxi.Extradition();
+        //    }
+        //}
     }
 }
