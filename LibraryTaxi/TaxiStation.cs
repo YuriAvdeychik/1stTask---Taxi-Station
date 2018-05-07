@@ -30,7 +30,7 @@ namespace LibraryTaxi
 
         public void ShowTaxis()
         {
-            Console.WriteLine("Type\tSpeed\tPrice\tConsumption\tCapasity");
+            Console.WriteLine("Type\tSpeed\tPrice\tConsumption\tCapacity");
             foreach (var taxi in _taxis)
             {
                 Console.WriteLine("{0}\t{1}\t{2}\t{3}\t\t{4}", taxi.TaxiType, taxi.Speed, taxi.Price, taxi.Consumption, taxi.Capacity);

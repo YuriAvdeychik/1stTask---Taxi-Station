@@ -32,11 +32,11 @@ namespace DemoTaxi
             }
             
             Console.WriteLine("\n\tSORTED TAXI STATION");
-            Console.WriteLine("Type\t\tSpeed\tPrice\tConsumption");
+            Console.WriteLine("Type\tSpeed\tPrice\tConsumption\tCapacity");
             var sortedTaxisByCons = taxiStation.SortTaxisByCons();
             foreach (var item in sortedTaxisByCons)
             {
-                Console.WriteLine("{0}\t{1}\t{2}\t{3}",item.GetType().Name, item.Speed, item.Price, item.Consumption);
+                Console.WriteLine("{0}\t{1}\t{2}\t{3}\t\t{4}", item.TaxiType, item.Speed, item.Price, item.Consumption, item.Capacity);
             }
 
             Console.WriteLine();
@@ -49,11 +49,11 @@ namespace DemoTaxi
             }
 
             Console.WriteLine("\n\tTAXI STATION AFTER REMOVING CARS");
-            Console.WriteLine("Type\t\tSpeed\tPrice\tConsumption");
+            Console.WriteLine("Type\tSpeed\tPrice\tConsumption\tCapacity");
             var sortedTaxisByCons1 = taxiStation.SortTaxisByCons();
             foreach (var item in sortedTaxisByCons1)
             {
-                Console.WriteLine("{0}\t{1}\t{2}\t{3}", item.GetType().Name, item.Speed, item.Price, item.Consumption);
+                Console.WriteLine("{0}\t{1}\t{2}\t{3}\t\t{4}", item.TaxiType, item.Speed, item.Price, item.Consumption, item.Capacity);
             }
 
             Console.WriteLine();
