@@ -14,14 +14,16 @@ namespace LibraryTaxi
         private TaxiFactory _taxiFactory;
         private ConcreteFactoryCreator _factoryCreator;
         private List<ITaxi> _taxis;
+        public List<ITaxi> _Taxis;
 
         public TaxiStation()
         {
             _factoryCreator = new ConcreteFactoryCreator();
             _taxis = new List<ITaxi>();
+
         }
 
-        public void CreateTaxi(TaxiTypes taxiType, int speed, int price, int consumption, int capasity=0)
+        public void CreateTaxi(TaxiTypes taxiType, int speed, int price, int consumption, int capasity = 0)
         {
             _taxiFactory = _factoryCreator.GetConcreteFactory(taxiType);
             ITaxi taxi = _taxiFactory.CreateTaxi(taxiType, speed, price, consumption, capasity);
@@ -30,7 +32,7 @@ namespace LibraryTaxi
 
         public void ShowTaxis()
         {
-            Console.WriteLine("Type\tSpeed\tPrice\tConsumption\tCapacity");
+            Console.WriteLine("Type\tSpeed\tPrice\tConsumption\tCapasity");
             foreach (var taxi in _taxis)
             {
                 Console.WriteLine("{0}\t{1}\t{2}\t{3}\t\t{4}", taxi.TaxiType, taxi.Speed, taxi.Price, taxi.Consumption, taxi.Capacity);
@@ -44,9 +46,9 @@ namespace LibraryTaxi
 
             foreach (ITaxi taxi in _taxis)
             {
-                if (taxi.Speed>=minSpeed && taxi.Speed<=maxSpeed)
+                if (taxi.Speed >= minSpeed && taxi.Speed <= maxSpeed)
                 {
-                    findedTaxis.Add(taxi);                    
+                    findedTaxis.Add(taxi);
                 }
             }
             return findedTaxis;
@@ -69,15 +71,16 @@ namespace LibraryTaxi
                 taxi.GoToWork();
         }
 
-        public void RemoveTaxi(ITaxi taxi)
+        public void BrokeTaxi(ITaxi taxi)
         {
             if (taxi != null)
             {
                 _taxis.Remove(taxi);
+                _Taxis = _taxis;
             }
         }
 
-        public void RemoveTaxi(int consumption)
+        public void BrokeTaxi(int consumption)
         {
             ITaxi taxi = _taxis.First(x => x.Consumption == consumption);
             _taxis.Remove(taxi);

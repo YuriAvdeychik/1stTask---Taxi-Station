@@ -1,4 +1,5 @@
 ﻿using LibraryTaxi.Enum;
+using LibraryTaxi.Interface;
 using LibraryTaxi.Taxi;
 using System;
 using System.Collections.Generic;
@@ -10,10 +11,20 @@ namespace LibraryTaxi
 {
     public class MigrationService
     {
-        RickshaTaxi rickshaTaxi = new RickshaTaxi(TaxiTypes.Ricksha, 50, 500, -1);
+        List<ITaxi> taxisForExtradition;
+
+        public MigrationService()
+        {
+            TaxiStation taxis = new TaxiStation();
+            List<ITaxi> taxisForExtradition = taxis._Taxis;
+        }
+
         public void MigrationServiceWork()
         {
-            rickshaTaxi.Extradition();
+            foreach (var taxi in taxisForExtradition)
+            {
+                taxi.Extradition();
+            }
         }
     }
 }
