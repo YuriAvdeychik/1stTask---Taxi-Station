@@ -40,6 +40,10 @@ namespace LibraryTaxi.Taxi
             Console.WriteLine("Ricksha taxi moved on work!");
         }
 
+        public void GoToFuelStation()
+        {
+        }
+
         public void Extradition()
         {
             Console.WriteLine("Ricksha has been extradited to Vietnam");

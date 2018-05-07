@@ -43,7 +43,7 @@ namespace LibraryTaxi.Taxi
             }
         }
 
-        public void FuelUp(int fuelVolume)
+        public void FuelUp(ushort fuelVolume)
         {
             IsReadyToWork = false;
             Console.WriteLine("Cargo taxi if fueling up");
@@ -57,6 +57,10 @@ namespace LibraryTaxi.Taxi
             Console.WriteLine("Pass taxi moved on work!");
         }
 
+        public void GoToFuelStation()
+        {
+            Console.WriteLine("Pass taxi moved to FuelStation");
+        }
 
     }
 }

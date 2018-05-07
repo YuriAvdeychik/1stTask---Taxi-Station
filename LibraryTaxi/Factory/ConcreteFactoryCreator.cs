@@ -10,19 +10,28 @@ namespace LibraryTaxi.Factory
 {
     public sealed class ConcreteFactoryCreator
     {
-        Dictionary<TaxiTypes, TaxiFactory> _factories;
+        private Dictionary<TaxiTypes, TaxiFactory> _factories;
 
         public ConcreteFactoryCreator()
         {
-            _factories = new Dictionary<TaxiTypes, TaxiFactory>();
-            _factories[TaxiTypes.Cargo] = new CargoTaxiFactory();
-            _factories[TaxiTypes.Pass] = new PassTaxiFactory();
-            _factories[TaxiTypes.Ricksha] = new RickshaTaxiFactory();
+            _factories = new Dictionary<TaxiTypes, TaxiFactory>
+            {
+                [TaxiTypes.Cargo] = new CargoTaxiFactory(),
+                [TaxiTypes.Pass] = new PassTaxiFactory(),
+                [TaxiTypes.Ricksha] = new RickshaTaxiFactory()
+            };
         }
 
         public TaxiFactory GetConcreteFactory (TaxiTypes taxiTypes)
         {
-            return _factories[taxiTypes];
+            if (taxiTypes == TaxiTypes.Cargo | taxiTypes == TaxiTypes.Pass | taxiTypes == TaxiTypes.Ricksha)
+            { 
+                return _factories[taxiTypes];
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }

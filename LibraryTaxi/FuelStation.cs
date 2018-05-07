@@ -11,7 +11,7 @@ namespace LibraryTaxi
 {
     public class FuelStation
     {
-        public void FuelStationWork(IFuelable taxi, int fuelVollume)
+        public void FuelStationWork(IFuelable taxi, ushort fuelVollume)
         {
             taxi.FuelUp(fuelVollume);
         }

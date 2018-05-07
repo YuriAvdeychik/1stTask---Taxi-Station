@@ -14,10 +14,11 @@ namespace DemoTaxi
         static void Main(string[] args)
         {
             TaxiStation taxiStation = new TaxiStation();
-            taxiStation.CreateTaxi(TaxiTypes.Cargo, 100, 1500, 10, 15);
-            taxiStation.CreateTaxi(TaxiTypes.Pass, 150, 2000, 5);
-            taxiStation.CreateTaxi(TaxiTypes.Ricksha, 50, 500, 0);
-            taxiStation.CreateTaxi(TaxiTypes.Ricksha, 40, 400, 2);
+            taxiStation.CreateTaxi(TaxiTypes.Cargo, 100, 500, 0, 15);
+            taxiStation.CreateTaxi(TaxiTypes.Pass, 150, 400, 0);
+            taxiStation.CreateTaxi(TaxiTypes.Pass, 160, 300, 10);
+            taxiStation.CreateTaxi(TaxiTypes.Ricksha, 0, 200, 3);
+            taxiStation.CreateTaxi(TaxiTypes.Ricksha, 40, 100, 2);
 
             Console.WriteLine("\tUNSORTED TAXI STATION");
             taxiStation.ShowTaxis();
@@ -26,7 +27,7 @@ namespace DemoTaxi
 
             int minSpeed = 90;
             int maxSpeed = 110;
-            var findTaxiBySpeed = taxiStation.FindTaxiBySpeed(minSpeed, maxSpeed);
+            List<ITaxi> findTaxiBySpeed = taxiStation.FindTaxiBySpeed(minSpeed, maxSpeed);
             foreach (var taxi in findTaxiBySpeed)
             {
                 Console.WriteLine("Taxi with speed between {2} and {3} is {0} with {1} km/h",
@@ -34,7 +35,7 @@ namespace DemoTaxi
             }
 
             Console.WriteLine("\n\tSORTED TAXI STATION\nType\tSpeed\tPrice\tConsumption\tCapasity");
-            var sortedTaxisByCons = taxiStation.SortTaxisByCons();
+            List<ITaxi> sortedTaxisByCons = taxiStation.SortTaxisByCons();
             foreach (var taxi in sortedTaxisByCons)
             {
                 Console.WriteLine("{0}\t{1}\t{2}\t{3}\t\t{4}", taxi.TaxiType, taxi.Speed, taxi.Price, taxi.Consumption, taxi.Capacity);
@@ -43,29 +44,22 @@ namespace DemoTaxi
             Console.WriteLine();
             taxiStation.SendTaxisToWork();
 
-            List<ITaxi> brokenTaxis = taxiStation.FindTaxiBySpeed(90, 200);
-            foreach (var taxi in brokenTaxis)
+            List<ITaxi> TaxisToBreak = taxiStation.FindTaxiBySpeed(0, 0);
+            foreach (var taxi in TaxisToBreak)
             {
-                taxiStation.BrokeTaxi(taxi);
+                taxiStation.BreakTaxi(taxi);
             }
 
-            //List<ITaxi> brokenTaxis1 = taxiStation.SortTaxisByCons();
-            //foreach (var taxi in brokenTaxis1)
-            //{
-            //    taxiStation.BrokeTaxi(10);
-            //}
-
-            Console.WriteLine("\n\tTAXI STATION AFTER BROKING CARS");
+            Console.WriteLine("\n\tTAXI STATION AFTER BREAKING CARS");
             taxiStation.ShowTaxis();
 
             Console.WriteLine("\tBROKEN TAXIS");
-            taxiStation.ShowRemovedTaxis();
+            taxiStation.ShowBrokenTaxis();
 
             FuelStation fuelStation = new FuelStation();
-            IFuelable taxi1 = taxiStation.FindTaxiByConsumption(0);
-            fuelStation.FuelStationWork(taxi1, 10);
+            IFuelable _taxi = (IFuelable)taxiStation.FindTaxiByConsumption(0);
+            fuelStation.FuelStationWork(_taxi, 10);
 
-            Console.WriteLine();
             taxiStation.SendTaxisToWork();
 
             Console.ReadKey();

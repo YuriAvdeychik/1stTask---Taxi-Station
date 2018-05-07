@@ -8,6 +8,6 @@ namespace LibraryTaxi.Interface
 {
     public interface IFuelable
     {
-        void FuelUp(int fuelVolume);
+        void FuelUp(ushort fuelVolume);
     }
 }

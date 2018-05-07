@@ -46,7 +46,6 @@
     <Compile Include="FuelStation.cs" />
     <Compile Include="Interface\IExtraditionable.cs" />
     <Compile Include="Interface\IFuelable.cs" />
-    <Compile Include="MigrationService.cs" />
     <Compile Include="Enum\TaxiTypes.cs" />
     <Compile Include="Factory\ConcreteFactories\CargoTaxiFactory.cs" />
     <Compile Include="Factory\ConcreteFactories\PassTaxiFactory.cs" />

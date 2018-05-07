@@ -79,13 +79,26 @@ namespace LibraryTaxi
 
         public void SendTaxisToWork()
         {
-            foreach (var taxi in _taxis)  if (taxi.IsReadyToWork == true )
+            if (_taxis.Count > 0) foreach (var taxi in _taxis)
+            { 
+                if (taxi.IsReadyToWork == true )
+                {
+                    Console.Write(taxi.Price);
+                    taxi.GoToWork();
+                }
+                else
+                {
+                    Console.Write(taxi.Price);
+                    taxi.GoToFuelStation();
+                }
+            }
+            else
             {
-                taxi.GoToWork();
+                Console.WriteLine("No working taxis in Taxi Station");
             }
         }
 
-        public void BrokeTaxi(ITaxi taxi)
+        public void BreakTaxi(ITaxi taxi)
         {
             if (taxi != null)
             {
@@ -94,7 +107,7 @@ namespace LibraryTaxi
             }
         }
 
-        public void ShowRemovedTaxis()
+        public void ShowBrokenTaxis()
         {
             Console.WriteLine("Type\tSpeed\tPrice\tConsumption\tCapasity");
             foreach (var taxi in _brokenTaxis)
@@ -104,13 +117,5 @@ namespace LibraryTaxi
             Console.WriteLine();
         }
 
-        //public void BrokeTaxi(int consumption)
-        //{
-        //    if (consumption != 0)
-        //    {
-        //        ITaxi taxi = _taxis.FirstOrDefault(x => x.Consumption == consumption);
-        //        _taxis.Remove(taxi);
-        //    }
-        //}
     }
 }
