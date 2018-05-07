@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace LibraryTaxi.Interface
 {
-    interface IRepairable
+    public interface IRepairable
     {
-        void Repair();
+        bool OnRepair { get; set; }
     }
 }

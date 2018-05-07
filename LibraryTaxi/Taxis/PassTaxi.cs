@@ -38,9 +38,6 @@ namespace LibraryTaxi.Taxi
             Console.WriteLine("Pass taxi moved on work!");
         }
 
-        public void Repair()
-        {
-            Console.WriteLine("Pass taxi has been moved to autoservice");
-        }
+
     }
 }

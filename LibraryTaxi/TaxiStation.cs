@@ -92,7 +92,7 @@ namespace LibraryTaxi
 
         public void BrokeTaxi(int consumption)
         {
-            if (consumption != null)
+            if (consumption != 0)
             {
                 ITaxi taxi = _taxis.FirstOrDefault(x => x.Consumption == consumption);
                 _taxis.Remove(taxi);

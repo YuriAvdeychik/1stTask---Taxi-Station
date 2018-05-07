@@ -15,6 +15,7 @@ namespace LibraryTaxi.Taxi
         public int Price { get; set; }
         public int Consumption { get; set; }
         public int Capacity { get;}
+        public bool OnRepair { get; set; }
 
         public CargoTaxi(TaxiTypes taxiType, int speed, int price, int consumption, int capacity)
         {
@@ -35,6 +36,7 @@ namespace LibraryTaxi.Taxi
                 Capacity = capacity;
             }
             TaxiType = taxiType;
+            OnRepair = false; 
         }
 
         public void GoToWork()
@@ -42,10 +44,7 @@ namespace LibraryTaxi.Taxi
             Console.WriteLine("Cargo taxi moved on work!");
         }
 
-        public void Repair()
-        {
-            Console.WriteLine("Cargo taxi has been moved to autoservice");
-        }
+
 
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LibraryTaxi.Interface
 {
-    interface IExtraditionable
+    public interface IExtraditionable
     {
         void Extradition();
     }
