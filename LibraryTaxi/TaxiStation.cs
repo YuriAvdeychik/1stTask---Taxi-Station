@@ -83,13 +83,15 @@ namespace LibraryTaxi
             { 
                 if (taxi.IsReadyToWork == true )
                 {
-                    Console.Write(taxi.Price);
+                    Console.Write("\n{0} ",taxi.Price);
                     taxi.GoToWork();
+                    Console.Write(" with {0} fuel", taxi.Consumption);
                 }
                 else
                 {
-                    Console.Write(taxi.Price);
+                    Console.Write("\n{0} ", taxi.Price);
                     taxi.GoToFuelStation();
+                    Console.Write(" with {0} fuel", taxi.Consumption);
                 }
             }
             else

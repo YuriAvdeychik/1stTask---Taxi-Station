@@ -14,11 +14,12 @@ namespace DemoTaxi
         static void Main(string[] args)
         {
             TaxiStation taxiStation = new TaxiStation();
+            taxiStation.CreateTaxi(TaxiTypes.Cargo, 90, 600, 6, 15);
             taxiStation.CreateTaxi(TaxiTypes.Cargo, 100, 500, 0, 15);
-            taxiStation.CreateTaxi(TaxiTypes.Pass, 150, 400, 0);
-            taxiStation.CreateTaxi(TaxiTypes.Pass, 160, 300, 10);
-            taxiStation.CreateTaxi(TaxiTypes.Ricksha, 0, 200, 3);
-            taxiStation.CreateTaxi(TaxiTypes.Ricksha, 40, 100, 2);
+            taxiStation.CreateTaxi(TaxiTypes.Pass, 150, 400, 5);
+            taxiStation.CreateTaxi(TaxiTypes.Pass, 160, 300, 0);
+            taxiStation.CreateTaxi(TaxiTypes.Ricksha, 0, 200, 0);
+            taxiStation.CreateTaxi(TaxiTypes.Ricksha, 10, 100, 0);
 
             Console.WriteLine("\tUNSORTED TAXI STATION");
             taxiStation.ShowTaxis();
@@ -50,15 +51,19 @@ namespace DemoTaxi
                 taxiStation.BreakTaxi(taxi);
             }
 
-            Console.WriteLine("\n\tTAXI STATION AFTER BREAKING CARS");
+            Console.WriteLine("\n\n\tTAXI STATION AFTER BREAKING CARS");
             taxiStation.ShowTaxis();
 
             Console.WriteLine("\tBROKEN TAXIS");
             taxiStation.ShowBrokenTaxis();
 
             FuelStation fuelStation = new FuelStation();
-            IFuelable _taxi = (IFuelable)taxiStation.FindTaxiByConsumption(0);
-            fuelStation.FuelStationWork(_taxi, 10);
+            foreach (var taxi in sortedTaxisByCons)
+            {
+                IFuelable _taxi = (IFuelable)taxiStation.FindTaxiByConsumption(0);
+                fuelStation.FuelStationWork(_taxi, 10);
+            }
+
 
             taxiStation.SendTaxisToWork();
 

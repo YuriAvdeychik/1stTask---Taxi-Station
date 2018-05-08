@@ -37,7 +37,7 @@ namespace LibraryTaxi.Taxi
 
         public void GoToWork()
         {
-            Console.WriteLine("Ricksha taxi moved on work!");
+            Console.Write("Ricksha taxi moved on work");
         }
 
         public void GoToFuelStation()
@@ -46,7 +46,7 @@ namespace LibraryTaxi.Taxi
 
         public void Extradition()
         {
-            Console.WriteLine("Ricksha has been extradited to Vietnam");
+            Console.Write("Ricksha has been extradited to Vietnam");
         }
     }
 }

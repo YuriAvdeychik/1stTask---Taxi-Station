@@ -50,20 +50,20 @@ namespace LibraryTaxi.Taxi
         public void FuelUp(ushort fuelVolume)
         {
             IsReadyToWork = false;
-            Console.WriteLine("Cargo taxi if fueling up");
-            Thread.Sleep(500);
+            Console.WriteLine("Cargo taxi is fueling up");
             Consumption += fuelVolume;
             IsReadyToWork = true;
+            Console.WriteLine("Cargo taxi completed fueling");
         }
 
         public void GoToWork()
         {
-            Console.WriteLine("Cargo taxi moved on work!");
+            Console.Write("Cargo taxi moved on work");
         }
 
         public void GoToFuelStation()
         {
-            Console.WriteLine("Cargo taxi moved to FuelStation");
+            Console.Write("Cargo taxi moved to FuelStation");
         }
 
 
