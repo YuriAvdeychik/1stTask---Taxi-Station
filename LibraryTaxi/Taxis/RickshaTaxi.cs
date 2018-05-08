@@ -10,11 +10,11 @@ namespace LibraryTaxi.Taxis
 {
     public class RickshaTaxi : ITaxi, IExtraditionable
     {
-        public TaxiTypes TaxiType { get; set; }
+        public TaxiTypes TaxiType { get;}
         public int Speed { get; set; }
         public int Price { get; set; }
         public int Consumption { get; set; }
-        public int Capacity { get; set; }
+        public int Capacity { get;}
         public bool IsReadyToWork { get; set; }
 
         public RickshaTaxi(TaxiTypes taxiType, int speed, int price, int consumption)

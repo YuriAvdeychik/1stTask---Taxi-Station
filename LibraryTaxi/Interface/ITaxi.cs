@@ -10,7 +10,7 @@ namespace LibraryTaxi.Interface
     public interface ITaxi
     {
         TaxiTypes TaxiType { get; }
-        int Speed { get;}
+        int Speed { get; set; }
         int Price { get; set; }
         int Consumption { get; set; }
         int Capacity { get; }
