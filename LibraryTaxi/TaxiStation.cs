@@ -32,15 +32,15 @@ namespace LibraryTaxi
 
         public void ShowTaxis()
         {
-            Console.WriteLine("Type\tSpeed\tPrice\tConsumption\tCapasity");
+            Console.WriteLine("Type\tSpeed\tPrice\tConsumption\tFuel");
             foreach (var taxi in _taxis)
             {
-                Console.WriteLine("{0}\t{1}\t{2}\t{3}\t\t{4}", taxi.TaxiType, taxi.Speed, taxi.Price, taxi.Consumption, taxi.Capacity);
+                Console.WriteLine("{0}\t{1}\t{2}\t{3}\t\t{4}", taxi.TaxiType, taxi.Speed, taxi.Price, taxi.Consumption, taxi.Fuel);
             }
             Console.WriteLine();
         }
 
-        public List<ITaxi> FindTaxiBySpeed(int minSpeed, int maxSpeed)
+        public List<ITaxi> FindTaxisBySpeed(int minSpeed, int maxSpeed)
         {
             List<ITaxi> findedTaxis = new List<ITaxi>();
 
@@ -111,10 +111,10 @@ namespace LibraryTaxi
 
         public void ShowBrokenTaxis()
         {
-            Console.WriteLine("Type\tSpeed\tPrice\tConsumption\tCapasity");
+            Console.WriteLine("Type\tSpeed\tPrice\tConsumption\tFuel");
             foreach (var taxi in _brokenTaxis)
             {
-                Console.WriteLine("{0}\t{1}\t{2}\t{3}\t\t{4}", taxi.TaxiType, taxi.Speed, taxi.Price, taxi.Consumption, taxi.Capacity);
+                Console.WriteLine("{0}\t{1}\t{2}\t{3}\t\t{4}", taxi.TaxiType, taxi.Speed, taxi.Price, taxi.Consumption, taxi.Fuel);
             }
             Console.WriteLine();
         }

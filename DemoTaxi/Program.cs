@@ -33,24 +33,24 @@ namespace DemoTaxi
 
             int minSpeed = 90;
             int maxSpeed = 110;
-            List<ITaxi> findTaxiBySpeed = taxiStation.FindTaxiBySpeed(minSpeed, maxSpeed);
+            List<ITaxi> findTaxiBySpeed = taxiStation.FindTaxisBySpeed(minSpeed, maxSpeed);
             foreach (var taxi in findTaxiBySpeed)
             {
                 Console.WriteLine("Taxi with speed between {2} and {3} is {0} with {1} km/h",
                     taxi.GetType().Name, taxi.Speed, minSpeed, maxSpeed);
             }
 
-            Console.WriteLine("\n\tSORTED TAXI STATION\nType\tSpeed\tPrice\tConsumption\tCapasity");
+            Console.WriteLine("\n\tSORTED TAXI STATION\nType\tSpeed\tPrice\tConsumption\tFuel");
             List<ITaxi> sortedTaxisByCons = taxiStation.SortTaxisByCons();
             foreach (var taxi in sortedTaxisByCons)
             {
-                Console.WriteLine("{0}\t{1}\t{2}\t{3}\t\t{4}", taxi.TaxiType, taxi.Speed, taxi.Price, taxi.Consumption, taxi.Capacity);
+                Console.WriteLine("{0}\t{1}\t{2}\t{3}\t\t{4}", taxi.TaxiType, taxi.Speed, taxi.Price, taxi.Consumption, taxi.Fuel);
             }
 
             Console.WriteLine();
             taxiStation.SendTaxisToWork();
 
-            List<ITaxi> TaxisToBreak = taxiStation.FindTaxiBySpeed(0, 0);
+            List<ITaxi> TaxisToBreak = taxiStation.FindTaxisBySpeed(0, 0);
             foreach (var taxi in TaxisToBreak)
             {
                 taxiStation.BreakTaxi(taxi);

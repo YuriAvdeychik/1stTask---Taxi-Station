@@ -14,7 +14,7 @@ namespace LibraryTaxi.Taxis
         public int Speed { get; set; }
         public int Price { get; set; }
         public int Consumption { get; set; }
-        public int Capacity { get;}
+        public int Fuel { get;}
         public bool IsReadyToWork { get; set; }
 
         public RickshaTaxi(TaxiTypes taxiType, int speed, int price, int consumption)

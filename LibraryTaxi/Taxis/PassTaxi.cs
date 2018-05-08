@@ -15,10 +15,10 @@ namespace LibraryTaxi.Taxis
         public int Speed { get; set; }
         public int Price { get; set; }
         public int Consumption { get; set; }
-        public int Capacity { get;}
+        public int Fuel { get; set; }
         public bool IsReadyToWork { get; set; }
 
-        public PassTaxi(TaxiTypes taxiType, int speed, int price, int consumption)
+        public PassTaxi(TaxiTypes taxiType, int speed, int price, int consumption, int fuel)
         {
             if (speed > 0)
             {
@@ -31,6 +31,10 @@ namespace LibraryTaxi.Taxis
             if (consumption > 0)
             {
                 Consumption = consumption;
+            }
+            if (fuel > 0)
+            {
+                Fuel = fuel;
             }
             TaxiType = taxiType;
             if (consumption == 0)

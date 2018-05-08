@@ -13,7 +13,7 @@ namespace LibraryTaxi.Interface
         int Speed { get; set; }
         int Price { get; set; }
         int Consumption { get; set; }
-        int Capacity { get; }
+        int Fuel { get; }
         void GoToWork();
         void GoToFuelStation();
         bool IsReadyToWork { get; set; }

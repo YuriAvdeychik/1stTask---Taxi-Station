@@ -11,7 +11,7 @@ namespace LibraryTaxi.Factory.ConcreteFactories
 {
     class RickshaTaxiFactory : TaxiFactory
     {
-        public override ITaxi CreateTaxi(TaxiTypes taxiType, int speed, int price, int consumption, int capacity)
+        public override ITaxi CreateTaxi(TaxiTypes taxiType, int speed, int price, int consumption, int fuel)
         {
             return new RickshaTaxi(taxiType, speed, price, consumption);
         }
