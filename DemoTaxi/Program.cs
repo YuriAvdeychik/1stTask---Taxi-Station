@@ -17,12 +17,14 @@ namespace DemoTaxi
         {
             TaxiStation taxiStation = new TaxiStation();
             taxiStation.CreateTaxi(TaxiTypes.Cargo, 90, 600, 0, 15);
-            taxiStation.CreateTaxi(TaxiTypes.Cargo, 100, 500, 6, 15);
+            taxiStation.CreateTaxi(TaxiTypes.Cargo, 100, 500, 0, 15);
             taxiStation.CreateTaxi(TaxiTypes.Pass, 150, 400, 0);
-            taxiStation.CreateTaxi(TaxiTypes.Pass, 160, 300, 4);
-            taxiStation.CreateTaxi(TaxiTypes.Ricksha, 0, 200, 3);
+            taxiStation.CreateTaxi(TaxiTypes.Pass, 160, 300, 0);
+            taxiStation.CreateTaxi(TaxiTypes.Ricksha, 0, 200, 0);
             taxiStation.CreateTaxi(TaxiTypes.Ricksha, 10, 100, 0);
-            taxiStation.CreateTaxi(TaxiTypes.Ricksha, 15, 50, 1);
+            taxiStation.CreateTaxi(TaxiTypes.Ricksha, 15, 50, 0);
+            taxiStation.CreateTaxi(TaxiTypes.Cargo, 110, 700, 0, 15);
+            taxiStation.CreateTaxi(TaxiTypes.Pass, 140, 800, 0);
 
             Console.WriteLine("\tUNSORTED TAXI STATION");
             taxiStation.ShowTaxis();
@@ -62,28 +64,13 @@ namespace DemoTaxi
 
             FuelStation fuelStation = new FuelStation();
 
-            foreach (var taxi in sortedTaxisByCons)
+            foreach (ITaxi taxi in sortedTaxisByCons)
             {
-                if (taxi is RickshaTaxi)
+                if (!(taxi is RickshaTaxi) && (taxi.Capacity == 0))
                 {
-                    Console.WriteLine("No taxis to fuel up");
-                    break;
+                    IFuelable fuelableTaxi = (IFuelable)taxi;
+                    fuelStation.FuelStationWork(fuelableTaxi, 10);
                 }
-                else
-                {
-                    IFuelable _taxi = (IFuelable)taxiStation.FindTaxiByConsumption(0);
-                    if (_taxi != null)
-                    {
-                        fuelStation.FuelStationWork(_taxi, 10);
-                    }
-                    else
-                    {
-                        Console.WriteLine("No taxis to fuel up");
-                        break;
-
-                    }
-                }
-
             }
 
             taxiStation.SendTaxisToWork();

@@ -20,9 +20,10 @@ namespace LibraryTaxi.Taxis
 
         public CargoTaxi(TaxiTypes taxiType, int speed, int price, int consumption, int capacity)
         {
-
-            Speed = speed > 0 ? Speed = speed : 0;
-
+            if (speed > 0)
+            {
+                Speed = speed;
+            }
             if (price > 0)
             {
                 Price = price;
