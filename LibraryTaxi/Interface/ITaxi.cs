@@ -12,7 +12,7 @@ namespace LibraryTaxi.Interface
         TaxiTypes TaxiType { get; }
         int Speed { get; set; }
         int Price { get; set; }
-        int Consumption { get; set; }
+        int Consumption { get; }
         int Fuel { get; }
         void GoToWork();
         void GoToFuelStation();

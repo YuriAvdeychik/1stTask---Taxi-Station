@@ -23,10 +23,10 @@ namespace LibraryTaxi
             _brokenTaxis = new List<ITaxi>();
         }
 
-        public void CreateTaxi(TaxiTypes taxiType, int speed, int price, int consumption, int capasity = 0)
+        public void CreateTaxi(TaxiTypes taxiType, int speed, int price, int consumption, int fuel = 0)
         {
             _taxiFactory = _factoryCreator.GetConcreteFactory(taxiType);
-            ITaxi taxi = _taxiFactory.CreateTaxi(taxiType, speed, price, consumption, capasity);
+            ITaxi taxi = _taxiFactory.CreateTaxi(taxiType, speed, price, consumption, fuel);
             _taxis.Add(taxi);
         }
 
@@ -85,13 +85,13 @@ namespace LibraryTaxi
                     {
                         Console.Write("\n{0} ", taxi.Price);
                         taxi.GoToWork();
-                        Console.Write(" with {0} fuel", taxi.Consumption);
+                        Console.Write(" with {0} fuel", taxi.Fuel);
                     }
                     else
                     {
                         Console.Write("\n{0} ", taxi.Price);
                         taxi.GoToFuelStation();
-                        Console.Write(" with {0} fuel", taxi.Consumption);
+                        Console.Write(" with {0} fuel", taxi.Fuel);
                     }
                 }
             else

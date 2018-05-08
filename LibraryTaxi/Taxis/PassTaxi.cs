@@ -14,7 +14,7 @@ namespace LibraryTaxi.Taxis
         public TaxiTypes TaxiType { get;}
         public int Speed { get; set; }
         public int Price { get; set; }
-        public int Consumption { get; set; }
+        public int Consumption { get;}
         public int Fuel { get; set; }
         public bool IsReadyToWork { get; set; }
 
@@ -50,10 +50,10 @@ namespace LibraryTaxi.Taxis
         public void FuelUp(ushort fuelVolume)
         {
             IsReadyToWork = false;
-            Console.WriteLine("{0} Pass taxi is fueling up with {1} fuel", Price, Consumption);
-            Consumption += fuelVolume;
+            Console.WriteLine("{0} Pass taxi is fueling up with {1} fuel", Price, Fuel);
+            Fuel += fuelVolume;
             IsReadyToWork = true;
-            Console.WriteLine("{0} Pass taxi completed fueling with {1} fuel", Price, Consumption);
+            Console.WriteLine("{0} Pass taxi completed fueling with {1} fuel", Price, Fuel);
         }
 
         public void GoToWork()

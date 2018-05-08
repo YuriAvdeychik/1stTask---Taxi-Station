@@ -13,7 +13,7 @@ namespace LibraryTaxi.Taxis
         public TaxiTypes TaxiType { get;}
         public int Speed { get; set; }
         public int Price { get; set; }
-        public int Consumption { get; set; }
+        public int Consumption { get;}
         public int Fuel { get;}
         public bool IsReadyToWork { get; set; }
 
