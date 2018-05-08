@@ -14,13 +14,13 @@ namespace LibraryTaxi
         private TaxiFactory _taxiFactory;
         private ConcreteFactoryCreator _factoryCreator;
         public List<ITaxi> _taxis;
-        public List<ITaxi> _brokenTaxis;
+        public List<ITaxi> _soldTaxis;
 
         public TaxiStation()
         {
             _factoryCreator = new ConcreteFactoryCreator();
             _taxis = new List<ITaxi>();
-            _brokenTaxis = new List<ITaxi>();
+            _soldTaxis = new List<ITaxi>();
         }
 
         public void CreateTaxi(TaxiTypes taxiType, int speed, int price, int consumption, int fuel = 0)
@@ -71,7 +71,7 @@ namespace LibraryTaxi
             return _taxis.Sum(x => x.Price);
         }
 
-        public List<ITaxi> SortTaxisByCons()
+        public List<ITaxi> SortTaxisByConsumption()
         {
             List<ITaxi> sortedTaxis = _taxis.OrderBy(x => x.Consumption).ToList();
             return sortedTaxis;
@@ -100,23 +100,18 @@ namespace LibraryTaxi
             }
         }
 
-        public void BreakTaxi(ITaxi taxi)
+        public void SellTaxi(ITaxi taxi)
         {
             if (taxi != null)
             {
                 _taxis.Remove(taxi);
-                _brokenTaxis.Add(taxi);
+                _soldTaxis.Add(taxi);
             }
         }
 
-        public void ShowBrokenTaxis()
+        public List<ITaxi> GetSoldTaxis()
         {
-            Console.WriteLine("Type\tSpeed\tPrice\tConsumption\tFuel");
-            foreach (var taxi in _brokenTaxis)
-            {
-                Console.WriteLine("{0}\t{1}\t{2}\t{3}\t\t{4}", taxi.TaxiType, taxi.Speed, taxi.Price, taxi.Consumption, taxi.Fuel);
-            }
-            Console.WriteLine();
+            return _soldTaxis;
         }
 
     }

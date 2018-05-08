@@ -41,7 +41,7 @@ namespace DemoTaxi
             }
 
             Console.WriteLine("\n\tSORTED TAXI STATION\nType\tSpeed\tPrice\tConsumption\tFuel");
-            List<ITaxi> sortedTaxisByCons = taxiStation.SortTaxisByCons();
+            List<ITaxi> sortedTaxisByCons = taxiStation.SortTaxisByConsumption();
             foreach (var taxi in sortedTaxisByCons)
             {
                 Console.WriteLine("{0}\t{1}\t{2}\t{3}\t\t{4}", taxi.TaxiType, taxi.Speed, taxi.Price, taxi.Consumption, taxi.Fuel);
@@ -50,17 +50,22 @@ namespace DemoTaxi
             Console.WriteLine();
             taxiStation.SendTaxisToWork();
 
-            List<ITaxi> TaxisToBreak = taxiStation.FindTaxisBySpeed(0, 0);
-            foreach (var taxi in TaxisToBreak)
+            List<ITaxi> TaxisToSell = taxiStation.FindTaxisBySpeed(0, 0);
+            foreach (var taxi in TaxisToSell)
             {
-                taxiStation.BreakTaxi(taxi);
+                taxiStation.SellTaxi(taxi);
             }
 
-            Console.WriteLine("\n\n\tTAXI STATION AFTER BREAKING CARS");
+            Console.WriteLine("\n\n\tTAXI STATION AFTER SELLING CARS");
             taxiStation.ShowTaxis();
 
-            Console.WriteLine("\tBROKEN TAXIS");
-            taxiStation.ShowBrokenTaxis();
+            Console.WriteLine("\tSOLD TAXIS");
+            List<ITaxi> sellTaxis = taxiStation.GetSoldTaxis();
+            foreach (var taxi in sellTaxis)
+            {
+                Console.WriteLine("{0}\t{1}\t{2}\t{3}\t\t{4}", taxi.TaxiType, taxi.Speed, taxi.Price, taxi.Consumption, taxi.Fuel);
+            }
+            Console.WriteLine();
 
             FuelStation fuelStation = new FuelStation();
 
