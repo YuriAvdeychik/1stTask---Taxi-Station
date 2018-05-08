@@ -16,15 +16,15 @@ namespace DemoTaxi
         static void Main(string[] args)
         {
             TaxiStation taxiStation = new TaxiStation();
-            taxiStation.CreateTaxi(TaxiTypes.Cargo, 90, 600, 6, 5);
-            taxiStation.CreateTaxi(TaxiTypes.Cargo, 100, 500, 0, 0);
-            taxiStation.CreateTaxi(TaxiTypes.Pass, 150, 400, 4, 0);
-            taxiStation.CreateTaxi(TaxiTypes.Pass, 160, 300, 0, 6);
-            taxiStation.CreateTaxi(TaxiTypes.Ricksha, 0, 200, 3);
-            taxiStation.CreateTaxi(TaxiTypes.Ricksha, 10, 100, 0);
-            taxiStation.CreateTaxi(TaxiTypes.Ricksha, 15, 50, 1);
-            taxiStation.CreateTaxi(TaxiTypes.Cargo, 110, 700, 0, 15);
-            taxiStation.CreateTaxi(TaxiTypes.Pass, 140, 800, 0, 0);
+            taxiStation.CreateTaxi(TaxiTypes.Cargo, 90, 600, 11, 5);
+            taxiStation.CreateTaxi(TaxiTypes.Cargo, 100, 500, 16, 0);
+            taxiStation.CreateTaxi(TaxiTypes.Pass, 150, 400, 9, 0);
+            taxiStation.CreateTaxi(TaxiTypes.Pass, 160, 300, 10, 6);
+            taxiStation.CreateTaxi(TaxiTypes.Ricksha, 0, 200, 1);
+            taxiStation.CreateTaxi(TaxiTypes.Ricksha, 10, 100, 2);
+            taxiStation.CreateTaxi(TaxiTypes.Ricksha, 15, 50, 3);
+            taxiStation.CreateTaxi(TaxiTypes.Cargo, 110, 700, 13, 0);
+            taxiStation.CreateTaxi(TaxiTypes.Pass, 140, 800, 8, 0);
 
             Console.WriteLine("\tUNSORTED TAXI STATION");
             taxiStation.ShowTaxis();

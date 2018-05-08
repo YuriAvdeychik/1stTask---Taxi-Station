@@ -37,7 +37,7 @@ namespace LibraryTaxi.Taxis
                 Fuel = fuel;
             }
             TaxiType = taxiType;
-            if (consumption == 0)
+            if (fuel == 0)
             {
                 IsReadyToWork = false;
             }

@@ -13,8 +13,8 @@ namespace LibraryTaxi
     {
         private TaxiFactory _taxiFactory;
         private ConcreteFactoryCreator _factoryCreator;
-        public List<ITaxi> _taxis;
-        public List<ITaxi> _soldTaxis;
+        private List<ITaxi> _taxis;
+        private List<ITaxi> _soldTaxis;
 
         public TaxiStation()
         {
