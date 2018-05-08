@@ -7,23 +7,22 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace LibraryTaxi.Taxi
+namespace LibraryTaxi.Taxis
 {
     class CargoTaxi : ITaxi, IFuelable
     {
-        public TaxiTypes TaxiType { get; }
-        public int Speed { get; }
+        public TaxiTypes TaxiType { get; set; }
+        public int Speed { get; set; }
         public int Price { get; set; }
         public int Consumption { get; set; }
-        public int Capacity { get;}
+        public int Capacity { get; set; }
         public bool IsReadyToWork { get; set; }
 
         public CargoTaxi(TaxiTypes taxiType, int speed, int price, int consumption, int capacity)
         {
-            if (speed > 0)
-            {
-                Speed = speed;
-            }
+
+            Speed = speed > 0 ? Speed = speed : 0;
+
             if (price > 0)
             {
                 Price = price;
@@ -50,10 +49,10 @@ namespace LibraryTaxi.Taxi
         public void FuelUp(ushort fuelVolume)
         {
             IsReadyToWork = false;
-            Console.WriteLine("Cargo taxi is fueling up");
+            Console.WriteLine("{0} Cargo taxi is fueling up with {1} fuel", Price, Consumption);
             Consumption += fuelVolume;
             IsReadyToWork = true;
-            Console.WriteLine("Cargo taxi completed fueling");
+            Console.WriteLine("{0} Cargo taxi completed fueling with {1} fuel", Price, Consumption);
         }
 
         public void GoToWork()

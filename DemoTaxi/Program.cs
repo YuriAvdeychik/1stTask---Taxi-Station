@@ -1,6 +1,8 @@
 ﻿using LibraryTaxi;
 using LibraryTaxi.Enum;
 using LibraryTaxi.Interface;
+using LibraryTaxi.Factory;
+using LibraryTaxi.Taxis;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,12 +16,13 @@ namespace DemoTaxi
         static void Main(string[] args)
         {
             TaxiStation taxiStation = new TaxiStation();
-            taxiStation.CreateTaxi(TaxiTypes.Cargo, 90, 600, 6, 15);
-            taxiStation.CreateTaxi(TaxiTypes.Cargo, 100, 500, 0, 15);
-            taxiStation.CreateTaxi(TaxiTypes.Pass, 150, 400, 5);
-            taxiStation.CreateTaxi(TaxiTypes.Pass, 160, 300, 0);
-            taxiStation.CreateTaxi(TaxiTypes.Ricksha, 0, 200, 0);
+            taxiStation.CreateTaxi(TaxiTypes.Cargo, 90, 600, 0, 15);
+            taxiStation.CreateTaxi(TaxiTypes.Cargo, 100, 500, 6, 15);
+            taxiStation.CreateTaxi(TaxiTypes.Pass, 150, 400, 0);
+            taxiStation.CreateTaxi(TaxiTypes.Pass, 160, 300, 4);
+            taxiStation.CreateTaxi(TaxiTypes.Ricksha, 0, 200, 3);
             taxiStation.CreateTaxi(TaxiTypes.Ricksha, 10, 100, 0);
+            taxiStation.CreateTaxi(TaxiTypes.Ricksha, 15, 50, 1);
 
             Console.WriteLine("\tUNSORTED TAXI STATION");
             taxiStation.ShowTaxis();
@@ -58,12 +61,30 @@ namespace DemoTaxi
             taxiStation.ShowBrokenTaxis();
 
             FuelStation fuelStation = new FuelStation();
+
             foreach (var taxi in sortedTaxisByCons)
             {
-                IFuelable _taxi = (IFuelable)taxiStation.FindTaxiByConsumption(0);
-                fuelStation.FuelStationWork(_taxi, 10);
-            }
+                if (taxi is RickshaTaxi)
+                {
+                    Console.WriteLine("No taxis to fuel up");
+                    break;
+                }
+                else
+                {
+                    IFuelable _taxi = (IFuelable)taxiStation.FindTaxiByConsumption(0);
+                    if (_taxi != null)
+                    {
+                        fuelStation.FuelStationWork(_taxi, 10);
+                    }
+                    else
+                    {
+                        Console.WriteLine("No taxis to fuel up");
+                        break;
 
+                    }
+                }
+
+            }
 
             taxiStation.SendTaxisToWork();
 

@@ -6,15 +6,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LibraryTaxi.Taxi
+namespace LibraryTaxi.Taxis
 {
     public class RickshaTaxi : ITaxi, IExtraditionable
     {
-        public TaxiTypes TaxiType { get; }
-        public int Speed { get; }
+        public TaxiTypes TaxiType { get; set; }
+        public int Speed { get; set; }
         public int Price { get; set; }
         public int Consumption { get; set; }
-        public int Capacity { get; }
+        public int Capacity { get; set; }
         public bool IsReadyToWork { get; set; }
 
         public RickshaTaxi(TaxiTypes taxiType, int speed, int price, int consumption)
